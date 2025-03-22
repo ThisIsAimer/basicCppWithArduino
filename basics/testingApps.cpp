@@ -49,8 +49,20 @@ int main(){
     int a = 100;
     int b = 200;
 
-    //printf("\na + b = %d", addSums((int*)a,(int*)b)); //this doesnt work
+    int *ptrVariable = &a; // a pointer to a
+
+    int &referanceVariable = a; // it is just a with another name in other name
+
+
+    referanceVariable=200; // changing the reference variable
+
+
     printf("\na + b = %d", addSums(&a,&b));
+    
+    *ptrVariable = 399; // changing with pointer
+
+    //printf("\na + b = %d", addSums((int*)a,(int*)b)); //this doesnt work
+    printf("\na + b = %d", addSums(&referanceVariable,&b));
 
 
 }
