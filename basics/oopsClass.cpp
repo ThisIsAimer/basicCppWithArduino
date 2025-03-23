@@ -57,13 +57,23 @@ class vector{
 
     
     //operator overloading
-    vector operator+(const vector &a){
-        vector result;
-        result.x = x+ a.x;
-        result.y = y+ a.y;
+    // vector operator+(const vector &a){
+    //     vector result;
+    //     result.x = x+ a.x;
+    //     result.y = y+ a.y;
 
-        return(result);
+    //     return(result);
+    // }
+
+
+    //--------------------------------------------
+
+    vector& operator+(const vector& a){
+        this->x = x + a.x; // = x=x+a.x;
+        y += a.y;
+        return *this;
     }
+
 
 
     //= operator overload
