@@ -3,8 +3,6 @@
 
 class vector{
     private:
-
-    
     public:
 
     static int idNum;
@@ -15,7 +13,7 @@ class vector{
     char *name = nullptr;
 
 
-    //constructors
+    //constructors 1
     vector(){
 
         idNum++;
@@ -28,8 +26,8 @@ class vector{
         strcpy(name,"hey how are you!");
 
         }
-
-
+    
+    //constructors 2
     vector(int _x,int _y=2){
 
         idNum++;
@@ -43,13 +41,43 @@ class vector{
         y = _y;
         }
 
+    //copy constructor
+    vector(const vector &copy){
+
+        idNum++;
+        printf("\nThe id of new vector is: %d ", id);
+
+        //dinamically allocates memory
+        name = new char [32];
+        strcpy(name,copy.name);
+        printf("\nA copied vector has been created");
+        this->x = copy.x;
+        this->y = copy.y;
+        }
+
+    
     //operator overloading
-    vector operator+(vector &a){
+    vector operator+(const vector &a){
         vector result;
         result.x = x+ a.x;
         result.y = y+ a.y;
 
         return(result);
+    }
+
+
+    //= operator overload
+    // here adding a reference makes the code efficient and 
+    //makes it so there is no unnecessary copes of the objects
+    vector & operator=(const vector &i){
+        this->x = i.x;
+        this->y = i.y;
+
+        strcpy(name,i.name);
+
+        return *this; // in a=b=c it after evaluationg b=c, it gives reference 
+                      // to b, so that it can operate to a.
+
     }
  
 
@@ -58,7 +86,7 @@ class vector{
     }
 
 
-    //distructor
+    //destructor
     ~vector() {
         delete [] name;
         name = nullptr;
@@ -71,13 +99,12 @@ class vector{
 int vector::idNum = 1;
 
 
+vector a;
+vector b(5,7);
+vector c = {1};
 
 
 int main() {
-    vector a;
-    vector b(5,7);
-    vector c = {1};
-
     a.x = 10;
     a.y = 20;
 
@@ -86,6 +113,12 @@ int main() {
     a.print();
     b.print();
     c.print();
+
+    {
+    printf("\n");
+    vector copy(a);
+    printf("\n");
+    }
 
     printf("\n");
     printf("\npointer p is pointing to");
@@ -101,14 +134,6 @@ int main() {
     printf("\n\nvector sum is: ");
     sum.print();
 
-
-    // manual distructor calls
-    a.~vector();
-    b.~vector();
-    c.~vector();
-
-    //vector sum is not getting distructed for some reason
-    sum.~vector();
 
     return 0;
 }
