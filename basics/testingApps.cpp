@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using std::string;
 
 int addSums(int * a, int * b){
@@ -43,26 +44,39 @@ int main(){
     //     p++;
     // }
 
-    //---------------------------------------------------------------------------------------------------------------------\
+    //---------------------------------------------------------------------------------------------------------------------
     //pointer functions
 
-    int a = 100;
-    int b = 200;
+    // int a = 100;
+    // int b = 200;
 
-    int *ptrVariable = &a; // a pointer to a
+    // int *ptrVariable = &a; // a pointer to a
 
-    int &referanceVariable = a; // it is just a with another name in other name
-
-
-    referanceVariable=200; // changing the reference variable
+    // int &referanceVariable = a; // it is just a with another name in other name
 
 
-    printf("\na + b = %d", addSums(&a,&b));
+    // referanceVariable=200; // changing the reference variable
+
+
+    // printf("\na + b = %d", addSums(&a,&b));
     
-    *ptrVariable = 399; // changing with pointer
+    // *ptrVariable = 399; // changing with pointer
 
-    //printf("\na + b = %d", addSums((int*)a,(int*)b)); //this doesnt work
-    printf("\na + b = %d", addSums(&referanceVariable,&b));
+    // //printf("\na + b = %d", addSums((int*)a,(int*)b)); //this doesnt work
+    // printf("\na + b = %d", addSums(&referanceVariable,&b));
 
+    //-----------------------------------------------------------------------------------------------------------------------
+    // some string functions
+    std::string string1("hey how are ya!"),string2("hey how is it");
+
+    std:: cout<<"string1 is :"<<string1;
+
+    char buffer[32];
+
+    strcpy(buffer,string1.c_str());//converting the string object to a c string
+                                   //to print it with printf
+
+    printf("\n%s",string1.c_str());                               
+    printf("\n%s",buffer);
 
 }
