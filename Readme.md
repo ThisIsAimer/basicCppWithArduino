@@ -8,7 +8,7 @@
 - adding external header files.
 
 
-# Techstack used- C++, Arduino.
+# Techstack used- C++.
 
 
 Happy coding 💖
