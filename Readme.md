@@ -1,7 +1,6 @@
-# this is for basics of C++ and embedded development!
-## c++
+# Basics of C++ and embedded development!
 
-### key things learned:-
+## Key things learned:-
 
 - Basics.
 - Structures and classes.
@@ -9,4 +8,7 @@
 - adding external header files.
 
 
-Happy coding ♥
+# Techstack used- C++, Arduino.
+
+
+Happy coding 💖
