@@ -37,7 +37,7 @@ void loop()
   
   	// Low level GPIO port registers for each port have these registers:
 	// PINx  - PINx Input Pins Register, read only, reads entire 8-bit port bits
-	// PORTx - PORTx Data Register, read/write 8-bit port register
+	// PORTx - PORTx Data Register, read/write 8-bit port register(Its a buffer)
 	// DDRx  - PORTx Data Direction Register - read/write the direction of the port bits
 
   	uint8_t dipSwitches = PINB;  
