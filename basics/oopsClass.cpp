@@ -112,6 +112,7 @@ int vector::idNum = 1;
 vector a;
 vector b(5,7);
 vector c = {1};
+//vector c = vector(1);
 
 
 int main() {
