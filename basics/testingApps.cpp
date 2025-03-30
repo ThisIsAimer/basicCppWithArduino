@@ -17,13 +17,13 @@ int main(){
 
     // printf(hat);
 
-    // int i = 0;
-    // while (++i<10){
+    int i = 0;
+    while (++i<10){
 
-    //     printf("\n%d",i);
-    // }
+        printf("\n%d",i);
+    }
 
-    // printf("\n%d",i);
+    printf("\n%d",i);
 
     //----------------------------------------------------------------------------------------------------------
     //pointer experiment
@@ -67,16 +67,16 @@ int main(){
 
     //-----------------------------------------------------------------------------------------------------------------------
     // some string functions
-    std::string string1("hey how are ya!"),string2("hey how is it");
+    // std::string string1("hey how are ya!"),string2("hey how is it");
 
-    std:: cout<<"string1 is :"<<string1;
+    // std:: cout<<"string1 is :"<<string1;
 
-    char buffer[32];
+    // char buffer[32];
 
-    strcpy(buffer,string1.c_str());//converting the string object to a c string
-                                   //to print it with printf
+    // strcpy(buffer,string1.c_str());//converting the string object to a c string
+    //                                //to print it with printf
 
-    printf("\n%s",string1.c_str());                               
-    printf("\n%s",buffer);
+    // printf("\n%s",string1.c_str());                               
+    // printf("\n%s",buffer);
 
 }
