@@ -36,7 +36,7 @@ void loop()
                "	breq end_loop\n"    // break if equal
                "	lsl r16\n"          // logical shift left
                "	dec r17\n"          // decrement
-               "	rjmp start_loop\n"  //reletice jump: faster
+               "	rjmp start_loop\n"  //reletive jump: faster
                "end_loop:\n"
                "	sts (0x05+0x20), r16\n"
                                         //Store Direct to Data Space:
