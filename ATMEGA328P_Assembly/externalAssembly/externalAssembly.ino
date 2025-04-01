@@ -4,6 +4,7 @@
 extern "C"{
   void TurnLEDOn();
   void TurnLEDOff();
+  void setLED(uint8_t value);
 }
 
 
@@ -16,11 +17,27 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  TurnLEDOn();
+
+  #if 0 
+
+    TurnLEDOn();
   delay(100);
 
 
   TurnLEDOff();
   delay(100);
+
+  #endif
+//------------------------------------------------------------------------------
+  
+  #if 1
+
+  setLED(HIGH);
+  delay(1000);
+
+  setLED(LOW);
+  delay(1000);
+
+  #endif
 
 }
