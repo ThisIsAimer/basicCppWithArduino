@@ -1,4 +1,9 @@
 #include "avr/io.h"
+;variables
+
+primeNumbers:
+  ;     1 2 3 4 05 06 07 08 09 10 11 12 13 14 15 16
+  .byte 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53
 
 ;--------------------------------------------------------------------------------
 
@@ -19,6 +24,9 @@
 
 ;int16_t multiply (int16_t num1, int16_t num2)
 .global multiply
+
+;int8_t primeNums (int8_t index)
+.global primeNums
 
 
 .text
@@ -91,5 +99,36 @@ multiply:
   ret
 
 .endfunc
+;------------------------------------------------------------------------------
+.func primeNums
+primeNums:
 
+  push r17
+  push r30
+  push r31
+
+  
+  ldi ZL , lo8(primeNumbers) ; the z pointer low is r30
+  ldi ZH , hi8(primeNumbers) ; the z pointer high is r30
+  ;adding the index to the pointer
+
+
+  ldi r25, 0x00 ; r25 nay contain garbage value
+
+  clc
+  add ZL , r24
+  adc ZH , r25
+
+  ;storing the value in z pointer to r17
+  lpm r17 , Z ;load from program memory
+
+  mov r24, r17
+
+  pop r31
+  pop r30
+  pop r17
+ 
+  ret
+
+.endfunc
 
