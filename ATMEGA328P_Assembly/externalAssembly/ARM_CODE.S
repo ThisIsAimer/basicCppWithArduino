@@ -1,10 +1,6 @@
 #include "avr/io.h"
 ;variables
 
-primeNumbers:
-  ;     1 2 3 4 05 06 07 08 09 10 11 12 13 14 15 16
-  .byte 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53
-
 ;--------------------------------------------------------------------------------
 
 .equ    counter, 0xFFFF
@@ -28,9 +24,32 @@ primeNumbers:
 ;int8_t primeNums (int8_t index)
 .global primeNums
 
+;int16_t playerPower();
+.global playerPower
+
+.data ;data part stored in s ram
+;----------------------------------------
+.comm playerLevel, 1 ;1 byte stored in playerLevel 
+.global playerLevel
+
+.comm playerLives, 1
+.global playerLives
+
 
 .text
 ;----------------------------------------------------------------------------------
+
+
+primeNumbers:
+  ;     1 2 3 4 05 06 07 08 09 10 11 12 13 14 15 16
+  .byte 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53
+
+
+_playerLevel: .byte 100 ;this is not same as playerLevel its stored in flash
+_playerLives: .byte 5
+
+
+
 .func TurnLEDOn
 TurnLEDOn:
   push r17
@@ -106,14 +125,11 @@ primeNums:
   push r17
   push r30
   push r31
-
-  
   ldi ZL , lo8(primeNumbers) ; the z pointer low is r30
   ldi ZH , hi8(primeNumbers) ; the z pointer high is r30
   ;adding the index to the pointer
 
-
-  ldi r25, 0x00 ; r25 nay contain garbage value
+  ldi r25, 0x00 ;; r25 nay contain garbage value
 
   clc
   add ZL , r24
@@ -128,6 +144,41 @@ primeNums:
   pop r30
   pop r17
  
+  ret
+
+.endfunc
+
+;------------------------------------------------------------------
+.func playerPower
+playerPower:
+  push r0
+  push r1
+  push r17
+  push r18
+
+  ldi ZL, lo8(_playerLevel);_powerlevel is stored in flash
+  ldi ZH, hi8(_playerLevel)
+
+  lpm r17, Z
+  sts playerLevel, r17 ;powerlevel is stored in sram
+
+  ldi ZL, lo8(_playerLives)
+  ldi ZH, hi8(_playerLives)
+
+  lpm r17, Z
+  sts playerLives, r17
+
+  lds r17, playerLevel
+  lds r18, playerLives
+
+  mul r17, r18
+
+  movw r24,r0 ;copyCopy Register Word r25:r25, r1,r0
+
+  pop r18
+  pop r17
+  pop r1
+  pop r0
   ret
 
 .endfunc

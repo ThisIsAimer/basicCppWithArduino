@@ -11,6 +11,7 @@ extern "C"{
   void setLED(uint8_t value);
   int16_t multiply (int16_t num1, int16_t num2);
   int8_t primeNums (int8_t index);
+  int16_t playerPower();
 }
 
 
@@ -56,8 +57,13 @@ void loop() {
     for(int8_t i=0; i<=15 ; i++){
       sprintf(buffer, "at index %d prime number is (%d)",i,primeNums(i));
       Serial.println(buffer);
+
     }
+    sprintf(buffer,"\n\npower of player is %d", playerPower());
+      Serial.println(buffer);
   a++;
   }
+
+  
 
 }
