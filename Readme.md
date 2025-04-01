@@ -6,9 +6,11 @@
 - Structures and classes.
 - arduino internals.
 - adding external header files.
+- asm codes
+- external assembly file manipulation
 
 
-### Techstack used- C++.
+### Techstack used- C++, Assembly.
 
 
 Happy coding 💖
