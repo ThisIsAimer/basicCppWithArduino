@@ -27,7 +27,15 @@
 ;int16_t playerPower();
 .global playerPower
 
-.data ;data part stored in s ram
+;void digitalSetAsm(int8_t port, int8_t bit)
+.global digitalSetAsm
+
+;void digitalclrAsm(int8_t port, int8_t bit)
+.global digitalclrAsm
+
+
+
+.data ;data part in sram
 ;----------------------------------------
 .comm playerLevel, 1 ;1 byte stored in playerLevel 
 .global playerLevel
@@ -45,7 +53,7 @@ primeNumbers:
   .byte 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53
 
 
-_playerLevel: .byte 100 ;this is not same as playerLevel its stored in flash
+_playerLevel: .byte 100
 _playerLives: .byte 5
 
 
@@ -183,3 +191,48 @@ playerPower:
 
 .endfunc
 
+.func digitalSetAsm
+digitalSetAsm:
+  push r0
+  push r1
+
+  adiw r24,0x20 ; gets data address
+
+  clr XH
+  mov XL, r24 ; st pointer
+
+WriteOne:
+  ld r20, X
+
+  or r20, r22 ; just changes one value
+  st X, r20 ;x is a pointer pointing to r24
+
+  pop r1
+  pop r0
+  ret
+
+.endfunc
+
+
+.func digitalClrAsm
+digitalClrAsm:
+  push r0
+  push r1
+
+  adiw r24,0x20 ; gets data address
+
+  clr XH
+  mov XL, r24 ; st pointer
+
+WriteZero:
+  ld r20, X 
+
+  com r20 
+  and r20, r22 ; just changes one value
+  st X, r20 ;x is a pointer pointing to r24
+
+  pop r1
+  pop r0
+  ret
+
+.endfunc
