@@ -12,8 +12,8 @@ extern "C"{
   int16_t multiply (int16_t num1, int16_t num2);
   int8_t primeNums (int8_t index);
   int16_t playerPower();
-  void digitalSetAsm(int8_t port, int8_t bit)
-  void digitalclrAsm(int8_t port, int8_t bit)
+  void digitalSetAsm(int8_t port, int8_t bit);
+  void digitalclrAsm(int8_t port, int8_t bit);
 }
 
 
