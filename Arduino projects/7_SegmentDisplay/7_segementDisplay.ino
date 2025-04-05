@@ -1,3 +1,5 @@
+#include<iostream>
+
 // C++ code
 //
 //defining input ports
